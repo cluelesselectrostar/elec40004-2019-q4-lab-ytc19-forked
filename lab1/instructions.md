@@ -15,7 +15,7 @@ Our main goals for this lab are mainly around collaborating together
 on a repository, and include:
 
 - Adding a collaborator to your repository to give them access to your repo.
-- Synchronising two local repos
+- Synchronising two local repos via a shared remote
 - Working independently on two seperate parts of a repo
 - Merging work that has no merge conflicts
 - Working independently on the same part of a repo
@@ -70,7 +70,7 @@ are working with, you should each add your chosen lab partner as a collaborator.
 1. Go to the webpage for your github repo at `http://github.com/ELEC40004/elec40004-2019-q4-lab-${YOUR_LOGIN}`
 2. Choose the "settings" tab (next to "Insights" on the top right of the page)
 3. Choose "Manage access" from the options on the left side of the page.
-4. Got to "invite teams or people", the green button on the bottom right of the page.
+4. Go to "invite teams or people", the green button on the bottom right of the page.
 5. Type the github id of your partner into the textbox.
 6. Choose the role "Write" for your partner.
 
@@ -126,7 +126,9 @@ and then adding remotes:
     repositories in github:
 
     a.  `spec` -> `https://github.com/ELEC40004/elec40004-2019-q4-lab.git`
+    
     b.  `origin` -> `https://github.com/ELEC40004/elec40004-2019-q4-lab-${LOGIN1}.git`
+    
     c.  `mirror` -> `https://github.com/ELEC40004/elec40004-2019-q4-lab-${LOGIN2}.git`
 
 4.  Use `git remote -v` to double check that the names and github address are set up as you expect.
@@ -229,7 +231,7 @@ can manage it.
 
 ### Creating independent changes
 
-Each of you create a text file called `lab1/${YOUR_LOGIN}.txt` which
+Each of you should create a text file called `lab1/${YOUR_LOGIN}.txt` which
 contains your login name (or anything else unique).
 
 Commit this file to your local repository with an appropriate commit
@@ -269,7 +271,7 @@ pushes and pulls:
     The other repository (`RepoB`) will complain about not fast-forwarding, which means
     it doesn't want to skip over the intervening commit.
 
-2.  In the local repo where the push failed (`RepoB`) you now need to now merge the changes:
+2.  In the local repo where the push failed (`RepoB`) you now need to merge the changes:
     ```
     $ git pull origin master
     ```
@@ -316,8 +318,8 @@ produce a merge conflict.
 ### Creating a merge conflict
 
 The exercise contains a task `A1` which requires you to modify
-the file `exam_q1/lower_case.cpp`, by calling applying the function
-`tolower` to each character in a file.
+the file `exam_q1/lower_case.cpp`, by applying the function
+`tolower` to each character in a string.
 
 Both you and your partner should now implement `lower_case.cpp` independently,
 in full knowledge that it will cause a conflict. In practise you would
@@ -328,15 +330,15 @@ just return a random string if it is taking too long. Either way,
 it is very likely you will end up with slightly different implementations,
 which will cause a conflict.
 
-Note that completing the task _implicitly_ requires you to create
+(Note that completing the assessed task _implicitly_ requires you to create
 some kind of code to test the function - you might skip this
 step and hope that the implementation is fine, but to have any
 confidence in it you really need the function to be compiled and have
 some inputs passed through it. Any test infrastructure (source
-files, test scripts) should also be checked in.
+files, test scripts) should also be checked in.)
 
 Eventually you should both have something you are happy with,
-and can commit independently to your local repo.
+and can commit independently to your local repos.
 
 ### Resolving a merge conflict
 
