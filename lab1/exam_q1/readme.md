@@ -1,9 +1,9 @@
 This is a sample ELEC40004 exam question. It represents one
 question out of an "answer two out of three" assessment,
-and is intended to take two people a little under 4 hours.
+and so is intended to take two people a little under 4 hours.
 
 This has not been through the standard second-marking scheme
-for exams (a multi-state process involving 2nd markers and
+for exams (a multi-stage process involving 2nd markers and
 external examiners), and so may include accidental errors or
 ambiguities.
 
@@ -32,7 +32,7 @@ process:
 
     2.  Calculate $c_{t,w}$, the number of times the word $w$ appears in just the close sentences for word $t$.
 
-    3.  Calculate $s_{t,w}=c_{t,w} / (a_w^0.5)$ (`c_tw / sqrt(a_w)`), which is a metric intended
+    3.  Calculate $s_{t,w}=c_{t,w} / \sqrt{ a_w^0.5 }$ (in a code style :`c_tw / sqrt(a_w)`), which is a metric intended
         to favour globally uncommmon words which frequently appear locally alongside the target word.
 
 4.  Rank all words by their values of $s_{t,w}$, from highest to lowest value, and print the
@@ -57,7 +57,7 @@ Deliverables
 ============
 
 The assessment occurs in terms of the required files and behaviours
-state here.
+stated here.
 
 Files and functions other than the ones mentioned here may be included
 in the repo, such as source files used to test functions, scripts used
@@ -75,7 +75,7 @@ A : Utility functions (20%)
 The file `lower_case.hpp` provides a declaration for a function which
 should convert a string to lower case using the function `tolower` from `<cctype>`.
 
-Define this function in the file `lower_case.cpp`. 
+Complete the definition of this function in the file `lower_case.cpp`. 
 
 ### A2 - Implement `histogram_add` for a vector
 

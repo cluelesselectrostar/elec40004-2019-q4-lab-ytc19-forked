@@ -1,4 +1,4 @@
-#include "histogram_add.cpp"
+#include "histogram.hpp"
 
 int histogram_get_count(const vector<pair<string,int>> &counts, const string &word)
 {

@@ -5,6 +5,8 @@
 #include <string>
 #include <utility>
 
+using namespace std;
+
 /*
     If an entry for the given word exists in the counts vector, then increment the count.
     Otherwise, add a new entry with a count of 1.
