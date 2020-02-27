@@ -12,26 +12,33 @@ int histogram_get_count(const vector<pair<string,int>> &counts, const string &wo
 
 void histogram_add(vector<pair<string,int>> &counts, const string &word)
 {
-	for(int i=0; i<counts.size(); i++)
-	{
-		if(counts[i].first == word){
-			counts[i].second += 1;
-		}
-		else{
-			counts.push_back(pair<string, int> (word, 1);	
+	if(counts.size() = 0){
+		counts.push_back(pair<string, int> (word, 1));
+	}
+	else{
+		for(int i=0; i<counts.size(); i++)
+		{
+			if(counts[i].first == word){
+				counts[i].second += 1;
+			}
+			else{
+				counts.push_back(pair<string, int> (word, 1));	
+			}
 		}
 	}
 }
 
-void histogram_add(vector<map<string,int>> &counts, const string &word)
+void histogram_add(map<string,int> &counts, const string &word)
 {
-	for(int i=0; i<counts.size(); i++)
-	{
-		if(counts[i][word] >= 1){
-			counts[i].second += 1;
+	if(counts.empty()){
+		counts[word] = 1;
+	}
+	else{
+		if(counts[word] >= 1){
+			counts[word] += 1;
 		}
 		else{
-			counts.push_back[word] = 1;	
+			counts[word] = 1;
 		}
 	}
 }

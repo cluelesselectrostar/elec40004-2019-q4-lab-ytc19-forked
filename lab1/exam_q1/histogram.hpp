@@ -20,6 +20,6 @@ void histogram_add(vector<pair<string,int>> &counts, const string &word);
 */
 int histogram_get_count(const vector<pair<string,int>> &counts, const string &word);
 
-void histogram_add(vector<map<string,int>> &counts, const string &word);
+void histogram_add(map<string,int> &counts, const string &word);
 
 #endif
