@@ -9,3 +9,29 @@ int histogram_get_count(const vector<pair<string,int>> &counts, const string &wo
     }
     return 0; // Word never appeared
 }
+
+void histogram_add(vector<pair<string,int>> &counts, const string &word)
+{
+	for(int i=0; i<counts.size(); i++)
+	{
+		if(counts[i].first == word){
+			counts[i].second += 1;
+		}
+		else{
+			counts.push_back(pair<string, int> (word, 1);	
+		}
+	}
+}
+
+void histogram_add(vector<map<string,int>> &counts, const string &word)
+{
+	for(int i=0; i<counts.size(); i++)
+	{
+		if(counts[i][word] >= 1){
+			counts[i].second += 1;
+		}
+		else{
+			counts.push_back[word] = 1;	
+		}
+	}
+}
