@@ -27,6 +27,19 @@ void histogram_add(vector<pair<string,int>> &counts, const string &word)
 		}
 	}
 }
+/*
+{
+    for(int i=0; i<counts.size(); i++){
+        if(counts[i].first==word){
+            counts[i].second += 1;
+            return;
+        }
+    }
+
+    counts.push_back( { word, 1 } );
+}
+*/
+
 
 void histogram_add(map<string,int> &counts, const string &word)
 {
