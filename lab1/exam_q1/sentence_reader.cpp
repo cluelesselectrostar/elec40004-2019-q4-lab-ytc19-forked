@@ -38,8 +38,11 @@ vector<string> SentenceReader::next()
             sentence.push_back(word);
             word.clear(); //defensive programming.
           }
-          assert (!sentence.empty());
-          return sentence; //this is where the function should end; returning a vector of strings (a sentence)
+          //assert (!sentence.empty());
+          if (!sentence.empty()){
+            return sentence; //this is where the function should end; returning a vector of strings (a sentence)
+          }
+
         }
 
         if (isalpha(tmp)) {
