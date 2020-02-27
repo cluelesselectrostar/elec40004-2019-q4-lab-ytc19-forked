@@ -12,7 +12,7 @@ int histogram_get_count(const vector<pair<string,int>> &counts, const string &wo
 
 void histogram_add(vector<pair<string,int>> &counts, const string &word)
 {
-	if(counts.size() = 0){
+	if(counts.empty()){
 		counts.push_back(pair<string, int> (word, 1));
 	}
 	else{
