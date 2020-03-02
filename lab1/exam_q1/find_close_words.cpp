@@ -24,11 +24,17 @@ int main (int argc, char **argv) {
   vector<pair<string,int>> close_counts; //words in the same sentence at the target word.
   vector<pair<string,int>> all_counts; //same words as close_counts, but also counting in sentences without target word.
 
+  bool tfound;
+
   while(1) {
     SentenceReader eater(cin);
 
     vector<string> sentence = eater.next();
     cerr << "Sentence Reader created and reading next sentence." << endl;
+
+   if (sentence.empty()) {
+	break;
+   }
 
     for (int i=0; i<sentence.size(); i++) {
       if (i!= sentence.size()-1) {
@@ -39,7 +45,7 @@ int main (int argc, char **argv) {
     }
 
     //identify close sentences
-    bool tfound = false;
+    tfound = false;
     for (int i=0; i<sentence.size(); i++) {
       if (sentence[i] == target) {
         cerr << "found target in word" << i << endl;
