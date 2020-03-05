@@ -1,5 +1,4 @@
 #include "SOP.hpp"
-
 #include "SOP_helpers.hpp"
 
 SOP SOP_from_string(string equation)
@@ -28,7 +27,7 @@ SOP SOP_from_string(string equation)
             pos=pos+1;
         }else if(curr=='i'){
             // Start of a variable
-            pos=pos+1; // skip over the 'i' 
+            pos=pos+1; // skip over the 'i'
             string number; // Build up the digits following the i
             while(pos < len){
                 curr=equation[pos];
@@ -56,7 +55,7 @@ SOP SOP_from_string(string equation)
             // Create a new empty product
             assert(res.terms.size() > 0);
             res.terms.push_back({});
-            pos=pos+1; 
+            pos=pos+1;
         }else if(curr=='&'){
             // Continue an existing product
             assert(res.terms.back().size() > 0);
