@@ -13,5 +13,6 @@ int main()
 	histogram_add(counter, "eureka");
 	histogram_add(counter, "eureka");
 	histogram_add(counter, "eureka");
+	//histogram_add(counter, "lol");
 	cout << histogram_get_count(counter, "yolo") << " " << histogram_get_count(counter, "hi") << " " << histogram_get_count(counter, "eureka") << " " << counter.size() << endl;
 }
