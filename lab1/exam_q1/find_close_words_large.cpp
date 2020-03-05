@@ -50,6 +50,7 @@ int main (int argc, char **argv) {
       if (sentence[i] == target) {
         cerr << "found target in word" << i << endl;
         tfound = true;
+        break;
       }
     }
 
@@ -90,8 +91,8 @@ vector<out_param> output;
 for (int i=0; i<all_counts.size(); i++) {   //initialising values
 
   bool close = false;
-  string w = all_counts[i].first; //all_word
-  int a_w = all_counts[i].second; //all_count
+  //string w = all_counts[i].first; //all_word
+  //int a_w = all_counts[i].second; //all_count
   int c_tw = 0;
   cerr << "initialised parameters" << endl;
 
@@ -100,17 +101,20 @@ for (int i=0; i<all_counts.size(); i++) {   //initialising values
       c_tw = close_counts[j].second;
       cerr << "close word matched to all counts" <<  " " << close_counts[j].first << endl;
       close = true;
+      break;
     }
   }
 
   if (close == true) {
-    double s_tw = c_tw/ sqrt(a_w);
 
     out_param o_word;
-    o_word.oword = w;
-    o_word.os_tw = s_tw;
-    o_word.oa_w = a_w;
+    o_word.oword = all_counts[i].first; //w;
+
+    o_word.oa_w = all_counts[i].second; //a_w;
     o_word.oc_tw = c_tw;
+
+    double s_tw = c_tw/ sqrt(o_word.oa_w);
+    o_word.os_tw = s_tw;
 
     output.push_back(o_word);
     cerr << "pushed back the word " << " " << o_word.oword << endl;
