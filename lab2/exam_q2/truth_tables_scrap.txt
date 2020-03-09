@@ -1,0 +1,87 @@
+#include "SOP.hpp"
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <cmath>
+#include <vector>
+
+string getFileInput(ifstream &fileIn)
+{
+   std::string content( (std::istreambuf_iterator<char>(fileIn) ),
+                     (std::istreambuf_iterator<char>()) );
+
+  return content;
+
+}
+
+SOP SOP_from_TT(string &input)
+{
+  vector<vector<int>> outer;
+  vector<int> inner;
+  SOP equation;
+
+  for (int i=0; i<input.size(); i++) {
+
+    bool is_output = false;
+
+    if (input[i] == '|') {
+      is_output = true;
+      if (input[i+1] == 0) {
+        //just skip this line of inputs;
+      } else {
+        outer.push_back(inner);
+        inner.clear();
+      }
+      i+= 1;
+    }
+
+    if (is_output != true) {
+      if (input[i] == 0) {
+        int selector = -(i+1);
+        inner.push_back(selector);
+      } else {
+        int selector = (i+1);
+        inner.push_back(selector);
+      }
+    }
+
+  }
+
+  equation.terms = outer;
+
+  //cerr entire SOP equation
+  SOP *pointer_to_equation = &equation;
+  cerr << SOP_to_string(pointer_to_equation);
+
+  return equation;
+}
+
+int main(int argc, char* argv[]) {
+  string file1 = argv[1];
+  ifstream inStream1(file1);
+  string file1_content = getFileInput(inStream1);
+  cerr << file1_content << endl;
+  cerr << "taken in file 1" << endl;
+
+  /*
+  string file1_lines, file1_items;
+  while (getline(inStream1, file1_lines)){
+    stringstream ss1(file1_lines);
+  }
+  */
+
+
+  /* Ignore file 2 for now
+  string file2 = argv[2];
+  ifstream inStream2(file2);
+  getFileInput (inStream2);
+  cerr << "taken in file 2" << endl;
+
+  string file2_lines, file2_items;
+  while (getline(inStream2, file2_lines)) {
+    stringstream ss2(file2_lines);
+  }
+  */
+
+
+}
