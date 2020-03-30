@@ -2,26 +2,26 @@
 
 bool SOP_evaluate(SOP *equation, uint64_t inputs)
 {
-  bool sum = false;
+  bool sum=false;
+  for(int i=0; i < equation->terms.size() ; i++){
+    bool product=true;
+    for(int j=0; j<equation->terms[i].size(); j++){
+        int selector=equation->terms[i][j];
+        if(selector==0){
+          // Represents true; do nothing
+        }else{
+          bool negate = selector < 0;
+          int index = abs(selector)-1;
+          assert(index<64);
+          bool bit = (inputs>>index) & 1;
+          if(negate){
+              bit = !bit;
+          }
 
-  for (int i=0; i< equation->terms.size(); i++) { //loop over size of outer vector
-    bool product = true; //by default an empty product is true.
-
-    for (int j=0; j<equation->terms[i].size(); j++) { //loop over size of inner vector
-      int selector = equation->terms[i][j];
-      if (selector == 0) {
-        //this means that it is true
-      } else {
-        bool bit = (inputs >> (selector-1)) & 1; //shift lsb right and AND it with a one bit 1.
-        //remember that equation index starts at 1, input index starts at 0.
-        if (selector<0) { //if the term in equation should be negated
-          bit = !bit;
+          product = product && bit;
         }
-        product = product && bit; //for checking if there are 0s in the product.
-      }
     }
-
-    sum = sum || product; //sum of products!
+    sum = sum || product;
   }
   return sum;
 }

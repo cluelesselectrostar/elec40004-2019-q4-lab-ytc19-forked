@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -39,6 +40,7 @@ bool BiMap_lookup(BiMap *bm, int value2, string &value1);
 /* Extract all mappings as a vector
     The pairs can appear in any order.
 */
-vector<pair<string,int>> BiMap_export_mappings(const BiMap *bm);
+//vector<pair<string,int>> BiMap_export_mappings(const BiMap *bm);
+map<string,int> BiMap_export_mappings(const BiMap *bm);
 
 #endif
