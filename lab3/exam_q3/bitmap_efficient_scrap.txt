@@ -6,7 +6,7 @@
 struct BiMap
 {
     map<string,int> mapstoi;
-    map<int,string> mapitos;
+    map<int, string> mapitos;
 };
 
 /* Create a new BiMap */
@@ -27,26 +27,32 @@ void BiMap_destroy(BiMap *bm)
 */
 bool BiMap_insert(BiMap *bm, const string &value1, int value2)
 {
-
+  //iterating through string (value 1) first; iterating with key.
   map<string,int>::iterator it1;
-  it1 = bm->mapstoi.find(value1);
-  map<int,string>::iterator it2;
-  it2 = bm->mapitos.find(value2);
+  it1 = bm->mappings.find(value1);
 
-  //if either value 1 or value 2 is matched; i.e. iterator does not reach the end
-  if ( (it1 != bm->mapstoi.end()) || (it2 != bm->mapitos.end())) {
+  if (it1 != bm->mappings.end()) {
+    cerr << "already exists" << endl;
     return false;
   } else {
-    bm->mapstoi.insert({value1, value2});
-    bm->mapitos.insert({value2, value1});
-    return true;
+    //if string doesnt matches, then iterate through integer.
+    // then iterating through integer key (value2), like a vector (so use auto)
+    for (auto it2=bm->mappings.begin(); it2!=bm->mappings.end(); it2++) {
+      if (it2->second == value2) {
+        return false;
+      }
+      if (it2 == bm->mappings.end()) {
+        bm->mappings.insert(pair<string,int>(value1, value2));
+        return true;
+      }
+    }
   }
 }
 
 /*  Number of mappings in the data-structure */
 unsigned BiMap_size(const BiMap *bm)
 {
-    return bm->mapstoi.size();
+    return bm->mappings.size();
 }
 
 /* Lookup a mapping by string.
@@ -55,17 +61,13 @@ unsigned BiMap_size(const BiMap *bm)
 */
 bool BiMap_lookup(BiMap *bm, const string &value1, int &value2)
 {
-  if (bm->mapstoi.size()==0) {
-    cerr << "Error";
-    return false;
-  }
-
   map<string,int>::iterator it1;
-  it1 = bm->mapstoi.find(value1);
-  if (it1 == bm->mapstoi.end()) {
+  it1 = bm->mappings.find(value1);
+
+  if (it1 == bm->mappings.end()) {
     return false;
   } else {
-    value2 = it1->second;
+    it1->second = value2;
     return true;
   }
 }
@@ -76,27 +78,19 @@ bool BiMap_lookup(BiMap *bm, const string &value1, int &value2)
 */
 bool BiMap_lookup(BiMap *bm, int value2, string &value1)
 {
-  if (bm->mapitos.size()==0) {
-    cerr << "Error";
-    return false;
-  }
-
-  map<int,string>::iterator it2;
-  it2 = bm->mapitos.find(value2);
-
-  if (it2 == bm->mapitos.end()) {
-    return false;
-  } else {
-    value1 = it2->second;
-    return true;
+  for (auto it2=bm->mappings.begin(); it2!=bm->mappings.end(); it2++) {
+    if (it2->second == value2) {
+      bm->mappings.erase(it2);
+      bm->mappings.insert(it2, pair<string,int>(value1, value2));
+      return true;
+    }
+    if (it2 == bm->mappings.end()) {
+      return false;
+    }
   }
 }
 
 map<string,int> BiMap_export_mappings(const BiMap *bm)
 {
-  if (bm->mapstoi.size()==0) {
-    cerr << "Error";
-  }
-
-  return bm->mapstoi;
+    return bm->mappings;
 }
