@@ -77,7 +77,8 @@ bool BiMap_lookup(BiMap *bm, int value2, string &value1)
 {
   for (auto it2=bm->mappings.begin(); it2!=bm->mappings.end(); it2++) {
     if (it2->second == value2) {
-      it2->first = value1;
+      bm->mappings.erase(it2);
+      bm->mappings.insert(it2, pair<string,int>(value1, value2));
       return true;
     }
     if (it2 == bm->mappings.end()) {
