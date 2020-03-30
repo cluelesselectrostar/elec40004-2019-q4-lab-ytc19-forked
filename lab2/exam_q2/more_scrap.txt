@@ -1,0 +1,37 @@
+uint64_t convert(string &line) {
+  string input_only;
+  for (int i=0; i<line.size(); i++) {
+    if (line[i] != '|') {
+      input_only.push_back(line[i]);
+    } else {
+      uint64_t value;
+      istringstream iss(input_only);
+      iss >> value;
+      return value;
+    }
+  }
+}
+
+
+  //convert all strings to unit_64 chars
+  vector<uint64_t> combined_converted;
+  for (int x=0; x<combined.size(); x++) {
+    uint64_t converted = convert(combined[x]);
+    combined_converted.push_back(converted);
+  }
+
+  //cerr converted and stripped lines
+  for (int x=0; x<combined_converted.size(); x++) {
+    cerr << combined_converted[x] << endl;
+  }
+
+void cout_inputs(string &line) {
+  for (int i=0; i<line.size(); i++) {
+    if (line[i] != '|') {
+      cout << line[i];
+    } else {
+      cout << endl;
+      return;
+    }
+  }
+}

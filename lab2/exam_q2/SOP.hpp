@@ -20,7 +20,7 @@ using namespace std;
 */
 struct SOP
 {
-    vector<vector<int>> terms;  
+    vector<vector<int>> terms;
 };
 
 

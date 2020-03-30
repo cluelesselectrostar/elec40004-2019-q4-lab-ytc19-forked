@@ -1,0 +1,32 @@
+  string file1 = argv[1];
+  ifstream inStream1(file1);
+  getFileInput (inStream1);
+  cerr << "taken in file 1" << endl;
+
+  int file1_rows = 0, file1_cols = 0;
+  string file1_lines, file1_items;
+  while (getline(inStream1, file1_lines)){
+    ++file1_rows;
+    if (file1_rows == 1 ) {
+      stringstream ss1(file1_lines);
+      while (ss1 >> file1_items) file1_cols++;
+    }
+  }
+  cerr << "file 1 has " << file1_rows << " rows and " << file1_cols << " columns." << endl;
+
+
+  string file2 = argv[2];
+  ifstream inStream2(file2);
+  getFileInput (inStream2);
+  cerr << "taken in file 2" << endl;
+
+  int file2_rows = 0, file2_cols = 0;
+  string file2_lines, file2_items;
+  while (getline(inStream2, file2_lines)) {
+    ++file2_rows;
+    if (file2_rows == 1 ) {
+      stringstream ss2(file2_lines);
+      while (ss2 >> file2_items) file2_cols++;
+    }
+  }
+  cerr << "file 2 has " << file2_rows << " rows and " << file2_cols << " columns." << endl;

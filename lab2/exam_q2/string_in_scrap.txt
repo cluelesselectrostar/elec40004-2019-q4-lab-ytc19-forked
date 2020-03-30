@@ -1,0 +1,7 @@
+   /*string someString;
+   while (getline(fileIn, someString)) {
+     fileIn >> someString;
+   }
+   // Use the stream in this function, for example read a string.
+   //fileIn >> someString;
+   return someString;*/
