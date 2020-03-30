@@ -65,6 +65,12 @@ bool BiMap_lookup(BiMap *bm, const string &value1, int &value2)
 bool BiMap_lookup(BiMap *bm, int value2, string &value1)
 {
     // TODO
+    for(unsigned i=0; i<bm->mappings.size(); i++){
+        if(bm->mappings[i].second==value2){
+            value1 = bm->mappings[i].first;
+            return true;
+        }
+    }	
     return false;
 }
 
