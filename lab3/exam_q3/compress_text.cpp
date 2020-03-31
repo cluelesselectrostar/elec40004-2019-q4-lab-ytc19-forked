@@ -4,22 +4,23 @@
 int main()
 {
 	BiMap* prints = BiMap_create();
-	int count = 0;	
+	int count = 0;
 	int dummy = 0;
 
 	cout << std::hex;
 
 	while(1){
 		string tmp;
-		
+
 		cin >> tmp;
 
 		if(cin.fail()){
 			break;
 		}
+
 		if(BiMap_lookup(prints, tmp, dummy)){
 			cout << "@" << dummy << " ";
-		}else{
+		} else {
 			dummy = count;
 			BiMap_insert(prints, tmp, count);
 			count++;
