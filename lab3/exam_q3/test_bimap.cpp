@@ -31,7 +31,7 @@ int main()
 		cout << exported[i].first << " " << exported[i].second << endl;
 	}
 
-	BiMap_destroy(tester);	
+	BiMap_destroy(tester);	//How to test a destructor?
 
 	cout << "Done" << endl;
 }
