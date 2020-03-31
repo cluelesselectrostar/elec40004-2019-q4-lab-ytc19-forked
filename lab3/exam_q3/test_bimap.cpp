@@ -23,16 +23,13 @@ int main()
 	cout << "Does dog exists in the BiMap? " << BiMap_lookup(tester, dog, dog_num) << endl;
 	cout << "If yes, what is its number now? " << dog_num << endl;
 
-	//vector<pair<string,int>> exported = BiMap_export_mappings(tester);
-	//map<string,int>exported = BiMap_export_mappings(tester);
+	vector<pair<string,int>> exported = BiMap_export_mappings(tester);
 
 	cout << "Does lion exists in the BiMap? " << BiMap_lookup(tester, lion, lion_num) << endl;
 
-/*
 	for(int i=0; i<exported.size(); i++){
 		cout << exported[i].first << " " << exported[i].second << endl;
 	}
-*/
 
 	BiMap_destroy(tester);
 

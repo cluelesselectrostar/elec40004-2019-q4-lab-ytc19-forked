@@ -2,6 +2,7 @@
 #include <vector>
 #include <map>
 #include <iostream>
+#include <algorithm>
 
 struct BiMap
 {
@@ -92,11 +93,17 @@ bool BiMap_lookup(BiMap *bm, int value2, string &value1)
   }
 }
 
-map<string,int> BiMap_export_mappings(const BiMap *bm)
+bool sortbyint (const pair<string,int> &left, const pair<string,int> &right) {
+  return (left.second < right.second);
+}
+
+vector<pair<string,int>> BiMap_export_mappings(const BiMap *bm)
 {
   if (bm->mapstoi.size()==0) {
     cerr << "Error";
   }
+  vector<pair<string,int>> unsorted = vector<pair<string,int>>(bm->mapstoi.begin(), bm->mapstoi.end());
+  sort(unsorted.begin(),unsorted.end(), sortbyint);
 
-  return bm->mapstoi;
+  return unsorted;
 }
