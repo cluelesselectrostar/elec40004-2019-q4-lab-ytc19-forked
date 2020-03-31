@@ -38,8 +38,8 @@ bool BiMap_insert(BiMap *bm, const string &value1, int value2)
   if ( (it1 != bm->mapstoi.end()) || (it2 != bm->mapitos.end())) {
     return false;
   } else {
-    bm->mapstoi.insert({value1, value2});
-    bm->mapitos.insert({value2, value1});
+    bm->mapstoi.insert(bm->mapstoi.end(), {value1, value2});
+    bm->mapitos.insert(bm->mapitos.end(), {value2, value1});
     return true;
   }
 }
@@ -103,7 +103,7 @@ vector<pair<string,int>> BiMap_export_mappings(const BiMap *bm)
     cerr << "Error";
   }
   vector<pair<string,int>> unsorted = vector<pair<string,int>>(bm->mapstoi.begin(), bm->mapstoi.end());
-  sort(unsorted.begin(),unsorted.end(), sortbyint);
+  //sort(unsorted.begin(),unsorted.end(), sortbyint);
 
   return unsorted;
 }
