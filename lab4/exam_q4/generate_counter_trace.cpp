@@ -10,7 +10,8 @@ int main (int argc, char **argv) {
     write_bits_in_word(counter, w, cout);
     cout << endl;
     if (i== (pow(2,w)-1)) {
-      cout << "000" << endl;
+      counter = 0;
+      write_bits_in_word(counter, w, cout);
     }
     counter++;
   }
