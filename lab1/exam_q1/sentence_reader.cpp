@@ -23,12 +23,12 @@ vector<string> SentenceReader::next()
 
   vector<string> sentence;
   string word;
-  
+
 
   while (1) {
 
 	char tmp = src.get();
-    
+
         if (src.fail()){
           sentence.clear(); //defensive programming: want to return empty sentence.
           //assert(sentence.empty());
@@ -40,11 +40,11 @@ vector<string> SentenceReader::next()
           if (!word.empty()) { //this is the last word of the sentence
             sentence.push_back(word);
             word.clear(); //defensive programming.
-          } 
+          }
           //assert (!sentence.empty());
           if (!sentence.empty()){
             return sentence; //this is where the function should end; returning a vector of strings (a sentence)
-          } 
+          }
         }
 
         if (isalpha(tmp)) {
