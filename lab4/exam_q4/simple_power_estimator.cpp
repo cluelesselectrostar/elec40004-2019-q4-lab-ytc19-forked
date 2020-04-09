@@ -1,6 +1,7 @@
 #include "bit_utils.hpp"
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -23,15 +24,17 @@ vector<bool> read_bits(string s)
 int main(int argc, char** argv)
 {
 	double clock_rate = 1e8;
-	/*if(argv[1]!=NULL){
-		clock_rate = *argv[1];
-	}*/
-
 	double per_energy_signal = 1e-15;
-	/*if(argv[2]!=NULL){
-		per_energy_signal = *argv[2];
-	}*/
-	
+
+	if(argv[1]!=NULL){
+		clock_rate = atof(argv[1]);
+		if(argv[2] != NULL){
+			per_energy_signal = atof(argv[2]);
+		}
+	}
+
+	//cerr << "clock rate " << clock_rate << endl << "energy_per_flip " << per_energy_signal << endl;
+
 	int no_of_signals;
 	int cycle_count = -1;
 	int total_flips = 1;
@@ -52,10 +55,10 @@ int main(int argc, char** argv)
 	}
 
 	no_of_signals = current_cycle.size();
-	power = (total_flips*per_energy_signal)/(cycle_count*clock_rate);
+	power = (total_flips*per_energy_signal)/(cycle_count/clock_rate);
 
 	cout << no_of_signals << endl;
 	cout << cycle_count << endl;
 	cout << total_flips << endl;
-	cout << power << endl;
+	cout << setprecision(5) << power << endl;
 }
