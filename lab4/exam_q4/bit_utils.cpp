@@ -22,7 +22,7 @@ int total_bit_flips_in_word(uint64_t x, uint64_t y)
 vector<int> bit_flip_positions_in_vector(const vector<bool> &a, const vector<bool> &b)
 {
   vector<int> pos;
-  //assert (a.size() == b.size());
+  assert (a.size() == b.size());
 
   for (int i=0; i<a.size(); i++) {
     if (a[i] != b[i]) {

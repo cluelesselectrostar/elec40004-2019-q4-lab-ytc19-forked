@@ -22,15 +22,12 @@ vector<bool> read_bits(string s)
 
 int main(int argc, char** argv)
 {
-	double clock_rate = 1e8;
-	/*if(argv[1]!=NULL){
-		clock_rate = *argv[1];
-	}*/
-
-	double per_energy_signal = 1e-15;
-	/*if(argv[2]!=NULL){
-		per_energy_signal = *argv[2];
-	}*/
+	double per_energy_signal = 1e-12;
+	double clock_rate = 100e6;
+	if(argc>=3){
+		clock_rate = stod(argv[1]);
+		per_energy_signal = stod(argv[2]);
+	}
 	
 	int no_of_signals;
 	int cycle_count = -1;
