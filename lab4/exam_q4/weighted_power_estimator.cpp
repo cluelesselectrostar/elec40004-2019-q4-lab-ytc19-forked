@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 
 	int signals;
 	int cycle_count = -1;
-	vector<int> flips = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+	vector<int> flips;
 	double total_flips = 0;
 	vector<double> per_power;
 	double total_power = 0;
@@ -48,6 +48,12 @@ int main(int argc, char** argv)
 
 	while(!cin.fail()){
 		cin >> cc;
+		signals = cc.length();
+		if(cycle_count==0){
+			for(int j=0; j<signals; j++){
+				flips.push_back(0);
+			}
+		}
 		if(cycle_count>=0){
 			if(cc!=pc){
 				vector<bool> vcc = read_bit(cc);
@@ -62,8 +68,6 @@ int main(int argc, char** argv)
 		pc = cc;
 		cycle_count++;
 	}
-
-	signals = cc.length();
 
 	for(int j=0; j<pse.size(); j++){
 		double tmp_power = (flips[j]*pse[j])/(cycle_count/clock_rate);
