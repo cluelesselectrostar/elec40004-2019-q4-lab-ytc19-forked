@@ -1,5 +1,6 @@
 #include "row_set_factory.hpp"
 #include "row_set_float.hpp"
+#include "row_set_complex.hpp"
 #include "row_set_bool.hpp"
 
 RowSet *create_row_set(const string &field)
@@ -8,6 +9,8 @@ RowSet *create_row_set(const string &field)
         return new RowSetFloat();
     }else if(field=="bool"){
         return new RowSetBool();
+    }else if(field=="complex"){
+        return new RowSetComplex();
     }else{
         cerr<<"Unknown field "<<field<<endl;
         exit(1);
