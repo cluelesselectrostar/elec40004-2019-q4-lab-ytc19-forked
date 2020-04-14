@@ -27,7 +27,19 @@ void RowSet::ToReducedRowEchelonForm()
 
 void RowSet::ShowSparsity(ostream &dst)
 {
-    // TODO
+	for(int r=1; r<=RowCount(); r++){
+		dst << "|";
+		for(int c=1; c<=ColCount; c++){
+			if(IsZero(r,c)){
+				dst << " ";
+			}else if(IsUnit(r,c)){
+				dst << "1";
+			}else{
+				dst << "x";
+			}
+		}
+		dst << "|" << endl;
+	}
 }
 
 void RowSet::WriteRow(int row, ostream &dst)
