@@ -1,6 +1,7 @@
 #include "bit_utils.hpp"
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -31,7 +32,7 @@ int main(int argc, char** argv)
 		clock_rate = 100e6;
 		per_energy_signal = 1e-12;
 	}
-	
+
 	int signals;
 	int cycle_count = -1;
 	int total_flips = 0;
@@ -59,5 +60,5 @@ int main(int argc, char** argv)
 	cout << signals << endl;
 	cout << cycle_count << endl;
 	cout << total_flips << endl;
-	cout << power << endl;
+	cout << setprecision(5) << power << endl;
 }
