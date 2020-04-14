@@ -12,7 +12,15 @@ void RowSet::SubBuffer(int r, int c)
 
 void RowSet::DivBuffer(int r, int c)
 {
-    // TODO
+	SwapBuffer(r,c);
+	bool bufferzero = IsZero(r,c);
+	SwapBuffer(r,c);
+	if(bufferzero){
+	}else{
+		InvBuffer();
+		MulBuffer(r,c);
+		InvBuffer();
+	}
 }
 
 void RowSet::ToReducedRowEchelonForm()
@@ -22,7 +30,19 @@ void RowSet::ToReducedRowEchelonForm()
 
 void RowSet::ShowSparsity(ostream &dst)
 {
-    // TODO
+	for(int r=1; r<=RowCount(); r++){
+		dst << "|";
+		for(int c=1; c<=ColCount; c++){
+			if(IsZero(r,c)){
+				dst << " ";
+			}else if(IsUnit(r,c)){
+				dst << "1";
+			}else{
+				dst << "x";
+			}
+		}
+		dst << "|" << endl;
+	}
 }
 
 // Prints the given row to `dst`. The row should all be on one
